@@ -1,0 +1,95 @@
+CREATE table employee (
+  EMPNO VARCHAR2(8) constraint empnoNotNull not null,
+  empname varchar2(30) constraint empnameNotNull not null,
+  department varchar2(30) constraint deptNotNull not null,
+  email varchar2(50) constraint emailNotNull not null,
+  phone varchar2(20) constraint phoneNotNull not null,
+  constraint pk_employees primary key (empno)
+);
+Insert into EMPLOYEE (EMPNO,EMPNAME,DEPARTMENT,EMAIL,PHONE) values ('E100','Chuck Coordinator','Administration','chuck@colorado.edu','3-1111');
+Insert into EMPLOYEE (EMPNO,EMPNAME,DEPARTMENT,EMAIL,PHONE) values ('E101','Mary Manager','Football','mary@colorado.edu','5-1111');
+Insert into EMPLOYEE (EMPNO,EMPNAME,DEPARTMENT,EMAIL,PHONE) values ('E102','Sally Supervisor','Planning','sally@colorado.edu','3-2222');
+Insert into EMPLOYEE (EMPNO,EMPNAME,DEPARTMENT,EMAIL,PHONE) values ('E103','Alan Administrator','Administration','alan@colorado.edu','3-3333');
+
+CREATE table resourcetbl (
+    resno varchar2(8) constraint resnoNotNull not null,
+    resname varchar2(30) constraint resnameNotNull not null,
+    rate varchar2(30) constraint rateNotNull not null
+);
+
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R100','attendant',10);
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R101','police',15);
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R102','usher',10);
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R103','nurse',20);
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R104','janitor',15);
+Insert into RESOURCETBL (RESNO,RESNAME,RATE) values ('R105','food service',10);
+
+select * from resourcetbl;
+
+CREATE table eventrequest (
+eventno varchar2(8) constraint eventnoNotNull not null,
+dateheld date constraint dateheldNotNull not null,
+datereq date constraint dateheldNotNull not null,
+custno varchar2(8) constraint costnoNotNull not null,
+facno varchar2(8) constraint facnoNotNull not null,
+dateauth date,
+status varchar2(20) constraint statusNotNull not null,
+estcost varchar2(20) constraint estcostNotNull not null,
+
+)
+
+
+CREATE table eventrequest (
+eventno varchar2(8) constraint eventnoNotNulle2 not null,
+dateheld date constraint dateheldNotNulle2 not null,
+datereq date constraint datereqNotNulle2 not null,
+custno varchar2(8) constraint costnoNotNulle2 not null,
+facno varchar2(8) constraint facnoNotNulle2 not null,
+dateauth date,
+status varchar2(20) constraint statusNotNulle2 not null,
+estcost varchar2(20) constraint estcostNotNulle2 not null,
+estaudience varchar(20) constraint estauienceNotNulle2 not null,
+budno varchar(10),
+constraint pk_eventrequeste2 primary key (eventno),
+constraint fk_custnoe2 foreign key (custno) references customer (custno),
+constraint fk_facnoe2 foreign key (facno) references facility (facno)
+);
+
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E100',to_date('25-OCT-18','DD-MON-RR'),to_date('06-JUN-18','DD-MON-RR'),'C100','F100',to_date('08-JUN-18','DD-MON-RR'),'Approved',5000,80000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E101',to_date('26-OCT-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C100','F100',null,'Pending',5000,80000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E103',to_date('21-SEP-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C100','F100',to_date('01-AUG-18','DD-MON-RR'),'Approved',5000,80000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E102',to_date('14-SEP-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C100','F100',to_date('31-JUL-18','DD-MON-RR'),'Approved',5000,80000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E104',to_date('03-DEC-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C101','F101',to_date('31-JUL-18','DD-MON-RR'),'Approved',2000,12000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E105',to_date('05-DEC-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C101','F101',to_date('01-AUG-18','DD-MON-RR'),'Approved',2000,10000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E106',to_date('12-DEC-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C101','F101',to_date('31-JUL-18','DD-MON-RR'),'Approved',2000,10000,'B1000');
+Insert into EVENTREQUEST (EVENTNO,DATEHELD,DATEREQ,CUSTNO,FACNO,DATEAUTH,STATUS,ESTCOST,ESTAUDIENCE,BUDNO) values ('E107',to_date('23-NOV-18','DD-MON-RR'),to_date('28-JUL-18','DD-MON-RR'),'C105','F100',to_date('31-JUL-18','DD-MON-RR'),'Denied',10000,5000,null);
+
+select * from eventrequest
+
+
+
+create table evantplanline (
+planno varchar2(8) constraint plannoNotNullepl not null,
+lineno varchar2(8) constraint linenoNotNullEPL not null,
+timestart date constraint timeStartNotNullEPL not null,
+timeend date constraint timeEndNotNullEPL not null,
+numberfld varchar2(20) constraint numberFLDnotNullEPL not null,
+constraint
+
+)
+
+
+
+
+create table evantplanline (
+planno varchar2(8) constraint plannoNotNullepl not null,
+lineno varchar2(8) constraint linenoNotNullEPL not null,
+timestart date constraint timeStartNotNullEPL not null,
+timeend date constraint timeEndNotNullEPL not null,
+numberfld varchar2(20) constraint numberFLDnotNullEPL not null,
+locno varchar2(8) constraint epllocnonn not null,
+resno varchar2(8) constraint eplresnonn not null,
+constraint pk_epl primary key (planno, lineno),
+constraint fk_epl_ln foreign key (locno) references location (locno),
+constraint fk_epl_rn foreign key (resno) references resourcetbl (resno)
+);
