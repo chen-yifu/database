@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.drugbank.ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="drugbank">
+            <attribute name="exported-on">
+                <data type="NMTOKEN"/>
+            </attribute>
+            <attribute name="version">
+                <data type="decimal"/>
+            </attribute>
+            <attribute name="xsi:schemaLocation"/>
+            <oneOrMore>
+                <ref name="drug"/>
+            </oneOrMore>
+        </element>
+    </start>
+    <define name="drug">
+        <element name="drug">
+            <optional>
+                <attribute name="created">
+                    <data type="NMTOKEN"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type"/>
+            </optional>
+            <optional>
+                <attribute name="updated">
+                    <data type="NMTOKEN"/>
+                </attribute>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="average-mass"/>
+                    <ref name="cas-number"/>
+                    <ref name="description"/>
+                    <ref name="drugbank-id"/>
+                    <ref name="external-identifiers"/>
+                    <ref name="monoisotopic-mass"/>
+                    <ref name="name"/>
+                    <ref name="synonyms"/>
+                    <ref name="unii"/>
+                    <element name="absorption">
+                        <text/>
+                    </element>
+                    <element name="affected-organisms">
+                        <zeroOrMore>
+                            <element name="affected-organism">
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="ahfs-codes">
+                        <zeroOrMore>
+                            <element name="ahfs-code">
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="atc-codes">
+                        <zeroOrMore>
+                            <element name="atc-code">
+                                <attribute name="code">
+                                    <data type="NCName"/>
+                                </attribute>
+                                <oneOrMore>
+                                    <element name="level">
+                                        <attribute name="code">
+                                            <data type="NCName"/>
+                                        </attribute>
+                                        <text/>
+                                    </element>
+                                </oneOrMore>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="calculated-properties">
+                        <zeroOrMore>
+                            <ref name="property"/>
+                        </zeroOrMore>
+                    </element>
+                    <element name="categories">
+                        <zeroOrMore>
+                            <ref name="category"/>
+                        </zeroOrMore>
+                    </element>
+                    <element name="classification">
+                        <ref name="description"/>
+                        <element name="direct-parent">
+                            <text/>
+                        </element>
+                        <element name="kingdom">
+                            <text/>
+                        </element>
+                        <element name="superclass">
+                            <text/>
+                        </element>
+                        <element name="class">
+                            <text/>
+                        </element>
+                        <element name="subclass">
+                            <text/>
+                        </element>
+                        <zeroOrMore>
+                            <element name="alternative-parent">
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                        <zeroOrMore>
+                            <element name="substituent">
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="clearance">
+                        <text/>
+                    </element>
+                    <element name="dosages">
+                        <zeroOrMore>
+                            <element name="dosage">
+                                <element name="form">
+                                    <text/>
+                                </element>
+                                <ref name="route"/>
+                                <ref name="strength"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="drug-interactions">
+                        <zeroOrMore>
+                            <element name="drug-interaction">
+                                <ref name="drugbank-id"/>
+                                <ref name="name"/>
+                                <ref name="description"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="experimental-properties">
+                        <zeroOrMore>
+                            <ref name="property"/>
+                        </zeroOrMore>
+                    </element>
+                    <element name="external-links">
+                        <zeroOrMore>
+                            <element name="external-link">
+                                <ref name="resource"/>
+                                <ref name="url"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="fda-label">
+                        <text/>
+                    </element>
+                    <element name="food-interactions">
+                        <zeroOrMore>
+                            <element name="food-interaction">
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="general-references">
+                        <ref name="articles"/>
+                        <ref name="textbooks"/>
+                        <ref name="links"/>
+                        <ref name="attachments"/>
+                    </element>
+                    <element name="groups">
+                        <oneOrMore>
+                            <element name="group">
+                                <data type="NCName"/>
+                            </element>
+                        </oneOrMore>
+                    </element>
+                    <element name="half-life">
+                        <text/>
+                    </element>
+                    <element name="indication">
+                        <text/>
+                    </element>
+                    <element name="international-brands">
+                        <zeroOrMore>
+                            <element name="international-brand">
+                                <ref name="name"/>
+                                <element name="company">
+                                    <text/>
+                                </element>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="manufacturers">
+                        <zeroOrMore>
+                            <element name="manufacturer">
+                                <attribute name="generic">
+                                    <data type="boolean"/>
+                                </attribute>
+                                <attribute name="url">
+                                    <data type="anyURI"/>
+                                </attribute>
+                                <text/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="mechanism-of-action">
+                        <text/>
+                    </element>
+                    <element name="metabolism">
+                        <text/>
+                    </element>
+                    <element name="mixtures">
+                        <zeroOrMore>
+                            <element name="mixture">
+                                <ref name="name"/>
+                                <element name="ingredients">
+                                    <text/>
+                                </element>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="msds">
+                        <text/>
+                    </element>
+                    <element name="packagers">
+                        <zeroOrMore>
+                            <element name="packager">
+                                <ref name="name"/>
+                                <ref name="url"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="patents">
+                        <zeroOrMore>
+                            <element name="patent">
+                                <element name="number">
+                                    <data type="NMTOKEN"/>
+                                </element>
+                                <ref name="country"/>
+                                <ref name="approved"/>
+                                <element name="expires">
+                                    <data type="NMTOKEN"/>
+                                </element>
+                                <element name="pediatric-extension">
+                                    <data type="boolean"/>
+                                </element>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="pathways">
+                        <zeroOrMore>
+                            <element name="pathway">
+                                <element name="smpdb-id">
+                                    <data type="NCName"/>
+                                </element>
+                                <ref name="name"/>
+                                <ref name="category"/>
+                                <element name="drugs">
+                                    <oneOrMore>
+                                        <ref name="drug"/>
+                                    </oneOrMore>
+                                </element>
+                                <ref name="enzymes"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="pdb-entries">
+                        <zeroOrMore>
+                            <element name="pdb-entry">
+                                <data type="NMTOKEN"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="pharmacodynamics">
+                        <text/>
+                    </element>
+                    <element name="prices">
+                        <zeroOrMore>
+                            <element name="price">
+                                <ref name="description"/>
+                                <element name="cost">
+                                    <attribute name="currency">
+                                        <data type="NCName"/>
+                                    </attribute>
+                                    <data type="decimal"/>
+                                </element>
+                                <element name="unit">
+                                    <text/>
+                                </element>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="products">
+                        <zeroOrMore>
+                            <element name="product">
+                                <ref name="name"/>
+                                <element name="labeller">
+                                    <text/>
+                                </element>
+                                <element name="ndc-id">
+                                    <empty/>
+                                </element>
+                                <element name="ndc-product-code">
+                                    <text/>
+                                </element>
+                                <element name="dpd-id">
+                                    <text/>
+                                </element>
+                                <element name="ema-product-code">
+                                    <text/>
+                                </element>
+                                <element name="ema-ma-number">
+                                    <text/>
+                                </element>
+                                <element name="started-marketing-on">
+                                    <text/>
+                                </element>
+                                <element name="ended-marketing-on">
+                                    <text/>
+                                </element>
+                                <element name="dosage-form">
+                                    <text/>
+                                </element>
+                                <ref name="strength"/>
+                                <ref name="route"/>
+                                <element name="fda-application-number">
+                                    <text/>
+                                </element>
+                                <element name="generic">
+                                    <data type="boolean"/>
+                                </element>
+                                <element name="over-the-counter">
+                                    <data type="boolean"/>
+                                </element>
+                                <ref name="approved"/>
+                                <ref name="country"/>
+                                <ref name="source"/>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="protein-binding">
+                        <text/>
+                    </element>
+                    <element name="route-of-elimination">
+                        <text/>
+                    </element>
+                    <element name="salts">
+                        <zeroOrMore>
+                            <element name="salt">
+                                <ref name="drugbank-id"/>
+                                <ref name="name"/>
+                                <ref name="unii"/>
+                                <ref name="cas-number"/>
+                                <element name="inchikey">
+                                    <text/>
+                                </element>
+                                <optional>
+                                    <ref name="average-mass"/>
+                                    <ref name="monoisotopic-mass"/>
+                                </optional>
+                            </element>
+                        </zeroOrMore>
+                    </element>
+                    <element name="sequences">
+                        <zeroOrMore>
+                            <ref name="sequence"/>
+                        </zeroOrMore>
+                    </element>
+                    <element name="state">
+                        <data type="NCName"/>
+                    </element>
+                    <element name="synthesis-reference">
+                        <text/>
+                    </element>
+                    <element name="toxicity">
+                        <text/>
+                    </element>
+                    <element name="volume-of-distribution">
+                        <text/>
+                    </element>
+                </choice>
+            </zeroOrMore>
+            <optional>
+                <element name="reactions">
+                    <zeroOrMore>
+                        <ref name="reaction"/>
+                    </zeroOrMore>
+                </element>
+                <element name="snp-effects">
+                    <zeroOrMore>
+                        <element name="effect">
+                            <ref name="protein-name"/>
+                            <ref name="gene-symbol"/>
+                            <ref name="uniprot-id"/>
+                            <ref name="rs-id"/>
+                            <ref name="allele"/>
+                            <element name="defining-change">
+                                <text/>
+                            </element>
+                            <ref name="description"/>
+                            <ref name="pubmed-id"/>
+                        </element>
+                    </zeroOrMore>
+                </element>
+                <element name="snp-adverse-drug-reactions">
+                    <zeroOrMore>
+                        <ref name="reaction"/>
+                    </zeroOrMore>
+                </element>
+                <element name="targets">
+                    <zeroOrMore>
+                        <element name="target">
+                            <optional>
+                                <attribute name="position">
+                                    <data type="integer"/>
+                                </attribute>
+                            </optional>
+                            <ref name="id"/>
+                            <ref name="name"/>
+                            <ref name="organism"/>
+                            <ref name="actions"/>
+                            <ref name="references"/>
+                            <ref name="known-action"/>
+                            <zeroOrMore>
+                                <ref name="polypeptide"/>
+                            </zeroOrMore>
+                        </element>
+                    </zeroOrMore>
+                </element>
+                <ref name="enzymes"/>
+                <element name="carriers">
+                    <zeroOrMore>
+                        <element name="carrier">
+                            <optional>
+                                <attribute name="position">
+                                    <data type="integer"/>
+                                </attribute>
+                            </optional>
+                            <ref name="id"/>
+                            <ref name="name"/>
+                            <ref name="organism"/>
+                            <ref name="actions"/>
+                            <ref name="references"/>
+                            <ref name="known-action"/>
+                            <oneOrMore>
+                                <ref name="polypeptide"/>
+                            </oneOrMore>
+                        </element>
+                    </zeroOrMore>
+                </element>
+                <element name="transporters">
+                    <zeroOrMore>
+                        <element name="transporter">
+                            <attribute name="position">
+                                <data type="integer"/>
+                            </attribute>
+                            <ref name="id"/>
+                            <ref name="name"/>
+                            <ref name="organism"/>
+                            <ref name="actions"/>
+                            <ref name="references"/>
+                            <ref name="known-action"/>
+                            <oneOrMore>
+                                <ref name="polypeptide"/>
+                            </oneOrMore>
+                        </element>
+                    </zeroOrMore>
+                </element>
+            </optional>
+        </element>
+    </define>
+    <define name="drugbank-id">
+        <element name="drugbank-id">
+            <optional>
+                <attribute name="primary">
+                    <data type="boolean"/>
+                </attribute>
+            </optional>
+            <data type="NCName"/>
+        </element>
+    </define>
+    <define name="name">
+        <element name="name">
+            <text/>
+        </element>
+    </define>
+    <define name="description">
+        <element name="description">
+            <text/>
+        </element>
+    </define>
+    <define name="cas-number">
+        <element name="cas-number">
+            <text/>
+        </element>
+    </define>
+    <define name="unii">
+        <element name="unii">
+            <text/>
+        </element>
+    </define>
+    <define name="articles">
+        <element name="articles">
+            <zeroOrMore>
+                <element name="article">
+                    <ref name="ref-id"/>
+                    <ref name="pubmed-id"/>
+                    <ref name="citation"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="textbooks">
+        <element name="textbooks">
+            <zeroOrMore>
+                <element name="textbook">
+                    <ref name="ref-id"/>
+                    <element name="isbn">
+                        <text/>
+                    </element>
+                    <ref name="citation"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="links">
+        <element name="links">
+            <zeroOrMore>
+                <element name="link">
+                    <ref name="ref-id"/>
+                    <ref name="title"/>
+                    <ref name="url"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="attachments">
+        <element name="attachments">
+            <zeroOrMore>
+                <element name="attachment">
+                    <ref name="ref-id"/>
+                    <ref name="title"/>
+                    <ref name="url"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="average-mass">
+        <element name="average-mass">
+            <data type="decimal"/>
+        </element>
+    </define>
+    <define name="monoisotopic-mass">
+        <element name="monoisotopic-mass">
+            <data type="decimal"/>
+        </element>
+    </define>
+    <define name="synonyms">
+        <element name="synonyms">
+            <zeroOrMore>
+                <element name="synonym">
+                    <optional>
+                        <attribute name="coder"/>
+                    </optional>
+                    <optional>
+                        <attribute name="language"/>
+                    </optional>
+                    <text/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="strength">
+        <element name="strength">
+            <text/>
+        </element>
+    </define>
+    <define name="route">
+        <element name="route">
+            <text/>
+        </element>
+    </define>
+    <define name="approved">
+        <element name="approved">
+            <data type="NMTOKEN"/>
+        </element>
+    </define>
+    <define name="country">
+        <element name="country">
+            <text/>
+        </element>
+    </define>
+    <define name="source">
+        <element name="source">
+            <text/>
+        </element>
+    </define>
+    <define name="url">
+        <element name="url">
+            <data type="anyURI"/>
+        </element>
+    </define>
+    <define name="category">
+        <element name="category">
+            <oneOrMore>
+                <choice>
+                    <text/>
+                    <ref name="category"/>
+                    <element name="mesh-id">
+                        <text/>
+                    </element>
+                </choice>
+            </oneOrMore>
+        </element>
+    </define>
+    <define name="sequence">
+        <element name="sequence">
+            <optional>
+                <attribute name="format">
+                    <data type="NCName"/>
+                </attribute>
+            </optional>
+            <text/>
+        </element>
+    </define>
+    <define name="property">
+        <element name="property">
+            <element name="kind">
+                <text/>
+            </element>
+            <element name="value">
+                <text/>
+            </element>
+            <ref name="source"/>
+        </element>
+    </define>
+    <define name="external-identifiers">
+        <element name="external-identifiers">
+            <zeroOrMore>
+                <element name="external-identifier">
+                    <ref name="resource"/>
+                    <ref name="identifier"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="resource">
+        <element name="resource">
+            <text/>
+        </element>
+    </define>
+    <define name="enzymes">
+        <element name="enzymes">
+            <choice>
+                <zeroOrMore>
+                    <ref name="uniprot-id"/>
+                </zeroOrMore>
+                <zeroOrMore>
+                    <element name="enzyme">
+                        <optional>
+                            <attribute name="position">
+                                <data type="integer"/>
+                            </attribute>
+                        </optional>
+                        <choice>
+                            <ref name="drugbank-id"/>
+                            <ref name="id"/>
+                        </choice>
+                        <ref name="name"/>
+                        <optional>
+                            <ref name="uniprot-id"/>
+                        </optional>
+                        <optional>
+                            <ref name="organism"/>
+                            <ref name="actions"/>
+                            <ref name="references"/>
+                            <ref name="known-action"/>
+                        </optional>
+                        <zeroOrMore>
+                            <ref name="polypeptide"/>
+                        </zeroOrMore>
+                        <optional>
+                            <element name="inhibition-strength">
+                                <text/>
+                            </element>
+                            <element name="induction-strength">
+                                <text/>
+                            </element>
+                        </optional>
+                    </element>
+                </zeroOrMore>
+            </choice>
+        </element>
+    </define>
+    <define name="reaction">
+        <element name="reaction">
+            <choice>
+                <group>
+                    <ref name="sequence"/>
+                    <element name="left-element">
+                        <ref name="drugbank-id"/>
+                        <ref name="name"/>
+                    </element>
+                    <element name="right-element">
+                        <ref name="drugbank-id"/>
+                        <ref name="name"/>
+                    </element>
+                    <ref name="enzymes"/>
+                </group>
+                <group>
+                    <ref name="protein-name"/>
+                    <ref name="gene-symbol"/>
+                    <ref name="uniprot-id"/>
+                    <ref name="rs-id"/>
+                    <ref name="allele"/>
+                    <element name="adverse-reaction">
+                        <text/>
+                    </element>
+                    <ref name="description"/>
+                    <ref name="pubmed-id"/>
+                </group>
+            </choice>
+        </element>
+    </define>
+    <define name="protein-name">
+        <element name="protein-name">
+            <text/>
+        </element>
+    </define>
+    <define name="gene-symbol">
+        <element name="gene-symbol">
+            <data type="NCName"/>
+        </element>
+    </define>
+    <define name="uniprot-id">
+        <element name="uniprot-id">
+            <text/>
+        </element>
+    </define>
+    <define name="rs-id">
+        <element name="rs-id">
+            <text/>
+        </element>
+    </define>
+    <define name="allele">
+        <element name="allele">
+            <text/>
+        </element>
+    </define>
+    <define name="pubmed-id">
+        <element name="pubmed-id">
+            <text/>
+        </element>
+    </define>
+    <define name="id">
+        <element name="id">
+            <data type="NCName"/>
+        </element>
+    </define>
+    <define name="organism">
+        <element name="organism">
+            <optional>
+                <attribute name="ncbi-taxonomy-id"/>
+            </optional>
+            <text/>
+        </element>
+    </define>
+    <define name="actions">
+        <element name="actions">
+            <zeroOrMore>
+                <element name="action">
+                    <text/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+    <define name="references">
+        <element name="references">
+            <ref name="articles"/>
+            <ref name="textbooks"/>
+            <ref name="links"/>
+            <ref name="attachments"/>
+        </element>
+    </define>
+    <define name="known-action">
+        <element name="known-action">
+            <data type="NCName"/>
+        </element>
+    </define>
+    <define name="polypeptide">
+        <element name="polypeptide">
+            <attribute name="id">
+                <data type="NCName"/>
+            </attribute>
+            <attribute name="source">
+                <data type="NCName"/>
+            </attribute>
+            <ref name="name"/>
+            <element name="general-function">
+                <text/>
+            </element>
+            <element name="specific-function">
+                <text/>
+            </element>
+            <element name="gene-name">
+                <text/>
+            </element>
+            <element name="locus">
+                <text/>
+            </element>
+            <element name="cellular-location">
+                <text/>
+            </element>
+            <element name="transmembrane-regions">
+                <text/>
+            </element>
+            <element name="signal-regions">
+                <text/>
+            </element>
+            <element name="theoretical-pi">
+                <text/>
+            </element>
+            <element name="molecular-weight">
+                <text/>
+            </element>
+            <element name="chromosome-location">
+                <text/>
+            </element>
+            <ref name="organism"/>
+            <ref name="external-identifiers"/>
+            <ref name="synonyms"/>
+            <element name="amino-acid-sequence">
+                <attribute name="format">
+                    <data type="NCName"/>
+                </attribute>
+                <text/>
+            </element>
+            <element name="gene-sequence">
+                <attribute name="format">
+                    <data type="NCName"/>
+                </attribute>
+                <text/>
+            </element>
+            <element name="pfams">
+                <zeroOrMore>
+                    <element name="pfam">
+                        <ref name="identifier"/>
+                        <ref name="name"/>
+                    </element>
+                </zeroOrMore>
+            </element>
+            <element name="go-classifiers">
+                <zeroOrMore>
+                    <element name="go-classifier">
+                        <ref name="category"/>
+                        <ref name="description"/>
+                    </element>
+                </zeroOrMore>
+            </element>
+        </element>
+    </define>
+    <define name="ref-id">
+        <element name="ref-id">
+            <data type="NCName"/>
+        </element>
+    </define>
+    <define name="citation">
+        <element name="citation">
+            <text/>
+        </element>
+    </define>
+    <define name="title">
+        <element name="title">
+            <text/>
+        </element>
+    </define>
+    <define name="identifier">
+        <element name="identifier">
+            <text/>
+        </element>
+    </define>
+</grammar>
